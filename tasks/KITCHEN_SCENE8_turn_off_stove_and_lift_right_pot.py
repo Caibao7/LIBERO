@@ -15,23 +15,21 @@ from libero.libero.benchmark.mu_creation import *
 
 def main():
 
-    scene_name = "living_room_scene1"
-    language = "turn the basket upside down over the alphabet soup"
+    scene_name = "kitchen_scene8"
+    language = "Turn off stove and lift right moka pot upright in air."
     register_task_info(
         language,
         scene_name=scene_name,
-        objects_of_interest=["alphabet_soup_1", "basket_1"],
+        objects_of_interest=["flat_stove_1", "moka_pot_2"],
         goal_states=[
-            ("In", "alphabet_soup_1", "basket_1_contain_region"),
-            ("UpsideDown", "basket_1"),
-            ("PositionWithin", "basket_1", 0.0, 0.0, 0.582, 1, 1, 0.01),
-            ("PositionWithin", "alphabet_soup_1", 0.0, 0.0, 0.475, 1, 1, 0.01),
-        ]
+            ("TurnOff", "flat_stove_1"),
+            ("InAir",   "moka_pot_2", 1.0),
+            ("Upright", "moka_pot_2"),
+        ],
     )
 
     bddl_file_names, failures = generate_bddl_from_task_info()
     print(bddl_file_names)
-
 
 if __name__ == "__main__":
     main()
